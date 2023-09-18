@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	FILE *fp1;
+	int top,mid,bottom,a[100],x,i=0,flag=0,num,n;
+	fp1=fopen("number.txt","r");
+	if(fp1==NULL)
+	{
+		printf("file not found");
+		exit(0);
+	}
+	while(!feof(fp1))
+	{
+		fscanf(fp1,"%d",&num); 
+        a[i++]=num;           
+	}
+	n=i;
+	printf("Enter number to search:");
+	scanf("%d",&x);
+	top=0;
+	bottom=n-1;
+	while(top<=bottom)
+	{
+		mid=(top+bottom)/2;
+		if(x==a[mid])
+		{
+			flag=1;
+			break;
+		}
+	
+	 if(x>a[mid])
+	 {
+	 	top=mid+1;
+	 }
+	 else
+	 {
+	 	bottom=mid-1;
+	 }
+}
+	 if(flag==1)
+	 {
+	 	printf("number is found");
+	 }
+	 else
+	 {
+	 	printf("number is not found");
+	 }
+		
+	
+	fclose(fp1);
+}
